@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biz</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      padding: 2rem;
+    }
+    .lang-buttons button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #1f1f1f;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .slider {
+      display: flex;
+      overflow: hidden;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .slider img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 1rem;
+      transition: transform 0.5s ease;
+    }
+    .slider-wrapper {
+      display: flex;
+      width: calc(100% * 21); /* 42 fotoğraf, her grup 2 fotoğraf */
+      animation: slide 84s infinite ease-in-out;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-95%); }
+    }
+    .photo-group {
+      display: flex;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-buttons">
+      <button onclick="setLang('tr')">Türkçe</button>
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('es')">Español</button>
+    </div>
+
+    <div class="slider">
+      <div class="slider-wrapper">
+        <!-- 42 fotoğrafı 2'li gruplar halinde yerleştir -->
+        <!-- Toplam 21 grup -->
+        <!-- Aşağıdaki grup döngü ile oluşturuldu -->
+        
+        <!-- Fotoğraf grupları başlangıç -->
+        
+        <!-- Her grup 2 fotoğraf -->
+        
+        <!-- Bu kod 21 grup üretir -->
+        <!-- Başlangıç -->
+        
+        <!-- Fotoğraflar: photo1.jpg - photo42.jpg -->
+        
+        <!-- Grup üretimi -->
+        
+        <script>
+          const sliderWrapper = document.currentScript.parentElement;
+          for (let i = 1; i <= 42; i += 2) {
+            const group = document.createElement('div');
+            group.className = 'photo-group';
+            const img1 = document.createElement('img');
+            img1.src = `photo${i}.jpg`;
+            img1.alt = `Foto ${i}`;
+            group.appendChild(img1);
+            if (i + 1 <= 42) {
+              const img2 = document.createElement('img');
+              img2.src = `photo${i + 1}.jpg`;
+              img2.alt = `Foto ${i + 1}`;
+              group.appendChild(img2);
+            }
+            sliderWrapper.appendChild(group);
+          }
+        </script>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1 id="title">Biz</h1>
+      <p id="text">
+        Birlikte geçen her an, hayatımıza anlam katıyor. Bu siteyi, sevgimizi ve anılarımızı kutlamak için yaptım.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      tr: {
+        title: 'Biz',
+        text: 'Birlikte geçen her an, hayatımıza anlam katıyor. Bu siteyi, sevgimizi ve anılarımızı kutlamak için yaptım.'
+      },
+      en: {
+        title: 'Us',
+        text: 'Every moment together adds meaning to our lives. I made this site to celebrate our love and memories.'
+      },
+      es: {
+        title: 'Nosotros',
+        text: 'Cada momento juntos da sentido a nuestras vidas. Hice este sitio para celebrar nuestro amor y recuerdos.'
+      }
+    };
+
+    function setLang(lang) {
+      document.getElementById('title').innerText = translations[lang].title;
+      document.getElementById('text').innerText = translations[lang].text;
+    }
+  </script>
+</body>
+</html>
